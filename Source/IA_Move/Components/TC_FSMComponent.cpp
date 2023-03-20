@@ -16,9 +16,12 @@ void UTC_FSMComponent::BeginPlay()
 	for (const TPair<Estate, TSoftClassPtr<UTC_State>> State : States)
 	{
 		UObject* StateToLoad = State.Value.ToSoftObjectPath().TryLoad();
-		if (UTC_State* BaseState = Cast<UTC_State>(StateToLoad))
+		UClass* BaseClass = State.Value.Get();
+		UTC_State* StateToChange = BaseClass ? BaseClass->GetDefaultObject<UTC_State>() : nullptr;
+
+		if (StateToChange)
 		{
-			BaseState->InitState(Cast<AController>(GetOwner()));
+			StateToChange->InitState(Cast<AController>(GetOwner()));
 		}
 	}
 	
@@ -39,8 +42,9 @@ void UTC_FSMComponent::ChangeState(Estate NewState)
 	if(!States.Contains(NewState))
 		return;
 	TSoftClassPtr<UTC_State> MapState = States[NewState];
-	UObject* StateToLoad = MapState.ToSoftObjectPath().TryLoad();
-	UTC_State* StateToChange = Cast<UTC_State>(StateToLoad);
+	MapState.ToSoftObjectPath().TryLoad();
+	UClass* BaseClass = MapState.Get();
+	UTC_State* StateToChange = BaseClass ? BaseClass->GetDefaultObject<UTC_State>() : nullptr;
 	UTC_State* State = CurrentState.IsValid() ? CurrentState.Get() : nullptr;
 
 	if (State) {
