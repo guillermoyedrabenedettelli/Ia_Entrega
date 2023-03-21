@@ -34,7 +34,7 @@ protected:
 
 public:	
 	// Called every frame
-	
+	UTC_FSMComponent();
 private:
 	TWeakObjectPtr<UTC_State> CurrentState = nullptr;
 };

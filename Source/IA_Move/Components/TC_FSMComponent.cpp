@@ -28,6 +28,11 @@ void UTC_FSMComponent::BeginPlay()
 }
 
 
+UTC_FSMComponent::UTC_FSMComponent() : Super()
+{
+	PrimaryComponentTick.bCanEverTick = true;
+}
+
 void UTC_FSMComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
@@ -52,7 +57,7 @@ void UTC_FSMComponent::ChangeState(Estate NewState)
 	}
 	if (StateToChange) {
 		CurrentState = StateToChange;
-		StateToChange->OnExitState();
+		StateToChange->OnEnterState();
 	}
 }
 
