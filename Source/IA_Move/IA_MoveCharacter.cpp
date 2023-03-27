@@ -71,10 +71,10 @@ void AIA_MoveCharacter::BeginPlay()
 			Subsystem->AddMappingContext(DefaultMappingContext, 0);
 		}
 	}
-	Attackarea->OnComponentBeginOverlap.AddUniqueDynamic(this,&AIA_MoveCharacter::OnSphereOverLap);
+	Attackarea->OnComponentBeginOverlap.AddUniqueDynamic(this,&AIA_MoveCharacter::OnSphereOverLappped);
 }
 
-void AIA_MoveCharacter::OnSphereOverLap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+void AIA_MoveCharacter::OnSphereOverLappped(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
 ATC_MinionCharacter* Minion = Cast<ATC_MinionCharacter>(OtherActor);
 	if (Minion) {
