@@ -100,7 +100,7 @@ void ATC_MinionController::ChangePatrols()
 	if (TargetsPath.IsEmpty())
 		return;
 	++patrolNumber;
-	if (patrolNumber > TargetsPath.Num())
+	if (patrolNumber >= TargetsPath.Num())
 	{
 	patrolNumber=0;
 	}

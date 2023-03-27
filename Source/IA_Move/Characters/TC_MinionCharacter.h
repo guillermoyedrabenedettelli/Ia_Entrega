@@ -19,11 +19,16 @@ public:
 
 	UPROPERTY(EditDefaultsOnly, Category = "Animation")
 		UAnimMontage* Punch = nullptr;
-
+	UPROPERTY(EditDefaultsOnly, Category = "Animation")
+		UAnimMontage* Pray = nullptr;
+	UPROPERTY(EditDefaultsOnly, Category = "Animation")
+		UAnimMontage* Dance = nullptr;
 
 
 	ATC_MinionCharacter();
 	float PlayPunchAnimation();
+	float PlayDanceAnimation();
+	float PlayPrayAnimation();
 
 
 protected:

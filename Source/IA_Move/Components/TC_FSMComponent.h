@@ -12,7 +12,9 @@ UENUM(BlueprintType)
 enum class Estate : uint8
 {
 	GoToTarget,
-	AttackTarget
+	AttackTarget,
+	Pray,
+	Dance
 };
 
 
