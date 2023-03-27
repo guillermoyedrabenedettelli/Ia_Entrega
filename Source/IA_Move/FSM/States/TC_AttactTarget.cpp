@@ -31,7 +31,7 @@ void UTC_AttactTarget::OnAttackTimer()
 		return;
 	const float PunchDuration = MyMinion->PlayPunchAnimation();
 	if (PunchDuration > 0.f) {
-		MyMinion->GetWorldTimerManager().SetTimer(AttackTimer, this, &UTC_AttactTarget::OnNextTarget, PunchDuration,false);
+		MyMinion->GetWorldTimerManager().SetTimer(AttackTimer, this, &UTC_AttactTarget::OnNextTarget, PunchDuration, false);
 	}
 
 }
@@ -42,9 +42,9 @@ void UTC_AttactTarget::OnNextTarget()
 	ATC_MinionCharacter* MyMinion = MyController ? Cast<ATC_MinionCharacter>(MyController->GetPawn()) : nullptr;
 	if (!MyMinion)
 		return;
-	
-		MyController->ChangePatrols();
-		MyController->ChangeFSMState(Estate::GoToTarget);
 
-	
+	MyController->ChangePatrols();
+	MyController->ChangeFSMState(Estate::GoToTarget);
+
+
 }
