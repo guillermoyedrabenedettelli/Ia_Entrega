@@ -14,6 +14,8 @@ public:
 	void OnEnterState() override;
 	void OnExitState() override;
 	void OnUpdateState(float DeltaTime) override;
+	int range = 180; //50
+	bool objetivo_cerca = false;
 private:
 	TWeakObjectPtr<AActor> CurrentTarget = nullptr;
 	void OnTargetChange(AActor* NewTarget);

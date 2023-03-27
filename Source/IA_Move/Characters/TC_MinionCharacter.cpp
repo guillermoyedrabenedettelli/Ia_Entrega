@@ -5,6 +5,7 @@
 #include "Components/SphereComponent.h"
 #include "IA_Move/IA_MoveCharacter.h"
 #include "IA_Move/Controllers/TC_MinionController.h"
+#include "../Interfaces/TC_DamageableInterfaces.h"
 
 // Sets default values
 ATC_MinionCharacter::ATC_MinionCharacter()
@@ -13,8 +14,16 @@ ATC_MinionCharacter::ATC_MinionCharacter()
 	PrimaryActorTick.bCanEverTick = true;
 	sphereComponent = CreateDefaultSubobject<USphereComponent>(TEXT("SphereComponent"));
 	sphereComponent->SetupAttachment(RootComponent);
-	sphereComponent->SetSphereRadius(200.f);
+	sphereComponent->SetSphereRadius(100.f);
 
+}
+
+float ATC_MinionCharacter::PlayPunchAnimation()
+{
+	if(!Punch)
+	return 0.f;
+
+	return PlayAnimMontage(Punch);
 }
 
 // Called when the game starts or when spawned
@@ -29,7 +38,8 @@ void ATC_MinionCharacter::BeginPlay()
 
 void ATC_MinionCharacter::OnSphereOverLap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	if (OtherActor->IsA<AIA_MoveCharacter>())
+
+	if (Cast< ITC_DamageableInterfaces>(OtherActor))
 	{
 		if (ATC_MinionController* MyController = Cast<ATC_MinionController>(GetController()))
 		{

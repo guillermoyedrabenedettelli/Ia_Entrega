@@ -6,6 +6,7 @@
 #include "GameFramework/Character.h"
 #include "TC_MinionCharacter.generated.h"
 class USphereComponent;
+class UAnimMontage;
 UCLASS()
 class IA_MOVE_API ATC_MinionCharacter : public ACharacter
 {
@@ -14,8 +15,15 @@ class IA_MOVE_API ATC_MinionCharacter : public ACharacter
 public:
 	UPROPERTY(EditDefaultsOnly)
 		USphereComponent* sphereComponent = nullptr;
+
+
+	UPROPERTY(EditDefaultsOnly, Category = "Animation")
+		UAnimMontage* Punch = nullptr;
+
+
+
 	ATC_MinionCharacter();
-	
+	float PlayPunchAnimation();
 
 
 protected:

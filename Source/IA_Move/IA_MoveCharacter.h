@@ -36,6 +36,8 @@ class AIA_MoveCharacter : public ACharacter
 	/** Look Input Action */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	class UInputAction* LookAction;
+	UPROPERTY(EditDefaultsOnly)
+	class USphereComponent* Attackarea = nullptr;
 
 public:
 	AIA_MoveCharacter();
@@ -57,10 +59,13 @@ protected:
 	// To add mapping context
 	virtual void BeginPlay();
 
+
+	void OnSphereOverLap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 public:
 	/** Returns CameraBoom subobject **/
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
 	/** Returns FollowCamera subobject **/
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
+
 };
 
