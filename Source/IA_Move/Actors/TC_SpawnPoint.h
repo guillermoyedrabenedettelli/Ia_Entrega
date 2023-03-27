@@ -15,7 +15,7 @@ public:
 	UPROPERTY(EditDefaultsOnly)
 		TSubclassOf<ATC_MinionCharacter> ClassToSpawn;
 	UPROPERTY(EditAnywhere)
-		AActor* Target = nullptr;
+		TArray<AActor*> Target;
 
 
 

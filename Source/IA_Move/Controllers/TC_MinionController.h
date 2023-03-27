@@ -23,6 +23,8 @@ public:
 		UAISenseConfig_Sight* ConfigSight = nullptr;
 	UPROPERTY(EditDefaultsOnly)
 		UAISenseConfig_Damage* ConfigDamage = nullptr;
+	UPROPERTY(EditDefaultsOnly)
+		TArray<AActor*> TargetsPath;
 
 	FOnTargetChanged TargetChanged;
 
@@ -32,7 +34,7 @@ public:
 	void SetTarget(AActor* NewActor);
 	void InitFSM();
 	void ChangeFSMState(Estate State);
-
+	void ChangePatrols();
 protected:
 void BeginPlay() override;
 private:
@@ -43,4 +45,6 @@ private:
 	void OnPerceptionUpdate(AActor* Actor, FAIStimulus Stimulus);
 	void  ReactToSight(AActor* Target);
 	void OnLostTarget();
+	int patrolNumber=0;
+	
 };

@@ -17,4 +17,5 @@ public:
 private:
 	FTimerHandle AttackTimer;
 	void OnAttackTimer();
+	void OnNextTarget();
 };

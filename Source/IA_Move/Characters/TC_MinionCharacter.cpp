@@ -38,6 +38,7 @@ void ATC_MinionCharacter::BeginPlay()
 
 void ATC_MinionCharacter::OnSphereOverLap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
+//Aqui se crean los estados de cambio...
 
 	if (Cast< ITC_DamageableInterfaces>(OtherActor))
 	{
