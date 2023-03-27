@@ -38,6 +38,7 @@ void ATC_MinionController::SetTarget(AActor* NewActor)
 		return;
 	CurrentTarget = NewActor;
 	TargetChanged.ExecuteIfBound(NewActor);
+	ChangeFSMState(Estate::GoToTarget);
 }
 
 void ATC_MinionController::InitFSM()
